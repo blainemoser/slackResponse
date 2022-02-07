@@ -15,3 +15,6 @@
 # vendor/
 
 test_env.json
+
+#logging
+log.log
