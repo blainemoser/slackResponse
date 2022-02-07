@@ -16,11 +16,11 @@ type Slack struct {
 }
 
 const blankPayload = `{
+"text": "%s",
 "attachments": [
 		{
 			"mrkdwn_in": ["text"],
 			"color": "%s",
-			"pretext": "%s",
 			"fields": %s,
 			"ts": %d
 		}
@@ -52,7 +52,7 @@ func (s *Slack) getData(heading, content, level string) (data []byte, err error)
 	if err != nil {
 		return data, err
 	}
-	data = []byte(fmt.Sprintf(blankPayload, s.getColor(level), heading, fields, time.Now().Unix()))
+	data = []byte(fmt.Sprintf(blankPayload, heading, s.getColor(level), fields, time.Now().Unix()))
 	return data, err
 }
 
